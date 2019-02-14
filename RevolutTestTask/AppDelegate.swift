@@ -1,4 +1,3 @@
-// Copyright (C) ABBYY (BIT Software), 1993-2019 . All rights reserved.
 // Автор: Sergey Kharchenko
 // Описание: @warning добавить описание
 
@@ -11,6 +10,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.windowLevel = .normal
+        let navController = UINavigationController(rootViewController: CurrencyViewController())
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
 		// Override point for customization after application launch.
 		return true
 	}
