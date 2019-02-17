@@ -9,7 +9,7 @@ class ApiTests: XCTestCase {
 	
 	func testCurrencyRequest() {
 		let helper = NetworkHelper()
-		let requestReource = Resource(url: URL(string: "https://revolut.duckdns.org/latest?base=EUR")!, method: .get, parse: { data -> String?  in
+		let requestReource = Resource(url: URL(string: "https://revolut.duckdns.org/latest?base=RB")!, method: .get, parse: { data -> String?  in
 			let string = String(data: data, encoding: .utf8)
 			return string
 		}, headers: nil)

@@ -24,6 +24,10 @@
 		84BE2DE62214833500416E4F /* RevolutTestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DE52214833500416E4F /* RevolutTestTaskTests.swift */; };
 		84BE2DEE2214834A00416E4F /* ApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DED2214834A00416E4F /* ApiTests.swift */; };
 		84BE2DF0221484D800416E4F /* String+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DEF221484D800416E4F /* String+Networking.swift */; };
+		84BE2DFD2219766600416E4F /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DFC2219766600416E4F /* CurrencyTableViewCell.swift */; };
+		84BE2DFF22197BA600416E4F /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DFE22197BA600416E4F /* Currency.swift */; };
+		84BE2E032219815C00416E4F /* CurrencyResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2E022219815C00416E4F /* CurrencyResource.swift */; };
+		84BE2E0522199EB700416E4F /* CurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BE2E0422199EB700416E4F /* CurrencyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		84BE2DE72214833500416E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BE2DED2214834A00416E4F /* ApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTests.swift; sourceTree = "<group>"; };
 		84BE2DEF221484D800416E4F /* String+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Networking.swift"; sourceTree = "<group>"; };
+		84BE2DFC2219766600416E4F /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		84BE2DFE22197BA600416E4F /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		84BE2E022219815C00416E4F /* CurrencyResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResource.swift; sourceTree = "<group>"; };
+		84BE2E0422199EB700416E4F /* CurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyTableViewCell.xib; sourceTree = "<group>"; };
 		85960E99F1D4B4D64336C8D8 /* Pods-RevolutTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutTestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevolutTestTask/Pods-RevolutTestTask.release.xcconfig"; sourceTree = "<group>"; };
 		DAB97FCB9BDDB9431C50F8ED /* Pods_RevolutTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevolutTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,6 +127,10 @@
 				84BE2DBE2212D76000416E4F /* Assets.xcassets */,
 				84BE2DC02212D76000416E4F /* LaunchScreen.storyboard */,
 				84BE2DC32212D76000416E4F /* Info.plist */,
+				84BE2DFC2219766600416E4F /* CurrencyTableViewCell.swift */,
+				84BE2E0422199EB700416E4F /* CurrencyTableViewCell.xib */,
+				84BE2DFE22197BA600416E4F /* Currency.swift */,
+				84BE2E022219815C00416E4F /* CurrencyResource.swift */,
 			);
 			path = RevolutTestTask;
 			sourceTree = "<group>";
@@ -243,6 +255,7 @@
 			files = (
 				84BE2DC22212D76000416E4F /* LaunchScreen.storyboard in Resources */,
 				84BE2DBF2212D76000416E4F /* Assets.xcassets in Resources */,
+				84BE2E0522199EB700416E4F /* CurrencyTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,12 +327,15 @@
 				84BE2DBA2212D75E00416E4F /* CurrencyViewController.swift in Sources */,
 				84BE2DD62214824B00416E4F /* Resource+ObjectMapper.swift in Sources */,
 				84BE2DDC2214824B00416E4F /* OperationCompletion.swift in Sources */,
+				84BE2DFD2219766600416E4F /* CurrencyTableViewCell.swift in Sources */,
+				84BE2E032219815C00416E4F /* CurrencyResource.swift in Sources */,
 				84BE2DDA2214824B00416E4F /* URLRequest+Resource.swift in Sources */,
 				84BE2DDB2214824B00416E4F /* HttpMethod.swift in Sources */,
 				84BE2DD72214824B00416E4F /* NetworkHelper.swift in Sources */,
 				84BE2DB82212D75E00416E4F /* AppDelegate.swift in Sources */,
 				84BE2DDD2214824B00416E4F /* Dictionary+Networking.swift in Sources */,
 				84BE2DDE2214824B00416E4F /* СancellationProtocol.swift in Sources */,
+				84BE2DFF22197BA600416E4F /* Currency.swift in Sources */,
 				84BE2DD92214824B00416E4F /* Resource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

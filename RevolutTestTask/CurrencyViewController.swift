@@ -5,26 +5,13 @@ import UIKit
 
 class CurrencyViewController: UIViewController {
 	
-	private let tableViewDataSource: CurrencyTableViewDataSource
-	
-	init(tableViewDataSource: CurrencyTableViewDataSource) {
-		self.tableViewDataSource = tableViewDataSource
-		super.init(nibName: nil, bundle: nil)
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
+	lazy private var tableViewDataSource: CurrencyTableViewDataSource = CurrencyTableViewDataSource(dataSource: DataSource(networkHelper: NetworkHelper()), tableView: tableView)
 	
     lazy var tableView: UITableView =  {
         let result = UITableView(frame: view.bounds)
-        result.delegate = tableViewDataSource
-        result.dataSource = tableViewDataSource
         return result
     }()
-    
 	
-
     override func loadView() {
         super.loadView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +24,7 @@ class CurrencyViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         view.backgroundColor = .white
-		tableView.reloadData()
+		tableViewDataSource.reloadData()
 		// Do any additional setup after loading the view, typically from a nib.
     }
 }
@@ -51,6 +38,19 @@ class CurrencyTableViewDataSource: NSObject, UITableViewDataSource, UITableViewD
 		self.tableView = tableView
 		super.init()
 		self.dataSource.delegate = self
+		tableView.delegate = self
+		tableView.dataSource = self
+		self.dataSource.register(in: tableView)
+	}
+	
+	func reloadData() {
+		dataSource.loadData { result in
+			if result {
+				DispatchQueue.main.async { [weak self] in
+					self?.tableView.reloadData()
+				}
+			}
+		}
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -93,13 +93,9 @@ extension CurrencyTableViewDataSource: DataSourceDelegate {
 }
 
 protocol DataSourceDelegate {
-	func dataBeginUpdates()
-	
 	func dataReloaded()
 	func dataChanged(in section: Int)
 	func dataChanged(at indexPath: IndexPath)
-	
-	func dataEndUpdates()
 }
 
 protocol DataSourceProtocol {
@@ -109,20 +105,61 @@ protocol DataSourceProtocol {
 	func register(in tableView: UITableView)
 	func rows(in section: Int) -> Int
 	
+	func loadData(completion: @escaping (Bool) -> ())
+	
 	func sectionInfo(for section: Int) -> SectionInfo?
 	func cellModel(for indexPath: IndexPath) -> CellModel
 }
 
-class DataSource {
+class DataSource: DataSourceProtocol {
 	private var sections: [Section] = []
+	private var networkHelper: NetworkHelperProtocol
+	
+	init(networkHelper: NetworkHelperProtocol) {
+		self.networkHelper = networkHelper
+	}
+	
+	// MARK: - DataSourceProtocol
+	var delegate: DataSourceDelegate?
+	
+	var numberOfSections: Int {
+		return sections.count
+	}
+	
+	func register(in tableView: UITableView) {
+		CurrencyCellModel.register(in: tableView)
+	}
 	
 	func rows(in section: Int) -> Int {
-		if section < sections.count {
-			return sections[section].models.count
+		return sections[section].models.count
+	}
+	
+	func sectionInfo(for section: Int) -> SectionInfo? {
+		return sections[section].info
+	}
+	
+	func cellModel(for indexPath: IndexPath) -> CellModel {
+		return sections[indexPath.section].models[indexPath.row]
+	}
+	
+	func loadData(completion: @escaping (Bool) -> ()) {
+		_ = networkHelper.load(resource: Resource<Currency>.currencyGetResource(for: "EUR")) {[weak self] result in
+			guard let self = self else { return }
+			switch result {
+			case .failure(let error):
+				print(error)
+				DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
+					self?.loadData(completion: completion)
+				})
+			case .success(let currency):
+				let cellModels: [CellModel] = currency.rates.compactMap { CurrencyCellModel(currency: $0) }
+				self.sections = [Section(info: nil, models: cellModels)]
+				completion(true)
+			}
 		}
-		return 0
 	}
 }
+
 
 struct SectionInfo {
 	let title: String
@@ -130,11 +167,40 @@ struct SectionInfo {
 }
 
 struct Section {
-	let info: SectionInfo
+	let info: SectionInfo?
 	var models: [CellModel]
 }
 
 protocol CellModel {
+	static func register(in tableView: UITableView)
 	var rowHeight: CGFloat { get }
 	func cell(for tableView: UITableView) -> UITableViewCell
+}
+
+struct CurrencyCellModel {
+	private let currency: CurrencyRate
+	
+	init(currency: CurrencyRate) {
+		self.currency = currency
+	}
+}
+
+extension CurrencyCellModel: CellModel {
+	private static let cellIdentifier = "CurrencyTableViewCell"
+	static func register(in tableView: UITableView) {
+		tableView.register(UINib(nibName: "CurrencyTableViewCell", bundle: nil), forCellReuseIdentifier: CurrencyCellModel.cellIdentifier)
+	}
+	
+	var rowHeight: CGFloat {
+		return 60
+	}
+	
+	func cell(for tableView: UITableView) -> UITableViewCell {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyCellModel.cellIdentifier) as? CurrencyTableViewCell else {
+			assert(false, "Cell \"CurrencyTableViewCell\" is not registered in tableView: \(tableView), or class is not kind of \"CurrencyTableViewCell\" class")
+			return UITableViewCell(style: .default, reuseIdentifier: nil)
+		}
+		cell.configure(with: currency)
+		return cell
+	}
 }
