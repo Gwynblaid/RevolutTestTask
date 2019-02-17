@@ -4,7 +4,7 @@
 import Foundation
 import UIKit
 
-class CurrencyTableViewDataSource: NSObject {
+class CurrencyInteractor: NSObject {
     var dataSource: DataSourceProtocol
     var tableView: UITableView
     
@@ -20,7 +20,7 @@ class CurrencyTableViewDataSource: NSObject {
 }
 
 // MARK: - UITableViewDataSource
-extension CurrencyTableViewDataSource: UITableViewDataSource {
+extension CurrencyInteractor: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.numberOfSections
     }
@@ -35,14 +35,14 @@ extension CurrencyTableViewDataSource: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension CurrencyTableViewDataSource: UITableViewDelegate {
+extension CurrencyInteractor: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return dataSource.cellModel(for: indexPath).rowHeight
     }
 }
 
 // MARK: - Public
-extension CurrencyTableViewDataSource {
+extension CurrencyInteractor {
     func reloadData() {
         dataSource.loadData { result in
             if result {
@@ -52,28 +52,25 @@ extension CurrencyTableViewDataSource {
             }
         }
     }
+    
+    var currentCurrency: Currency {
+        set {
+            dataSource.currentCurrency = newValue
+        }
+        get {
+            return dataSource.currentCurrency
+        }
+    }
+    
+    var availiableCurrecies: [Currency] {
+        return Currency.allCurrencies
+    }
 }
 
 // MARK: - DataSourceDelegate
-extension CurrencyTableViewDataSource: DataSourceDelegate {
-    func dataBeginUpdates() {
-        tableView.beginUpdates()
-    }
-    
+extension CurrencyInteractor: DataSourceDelegate {
     func dataReloaded() {
         tableView.reloadData()
-    }
-    
-    func dataChanged(in section: Int) {
-        tableView.reloadSections(IndexSet(arrayLiteral: section), with: .automatic)
-    }
-    
-    func dataChanged(at indexPath: IndexPath) {
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-    }
-    
-    func dataEndUpdates() {
-        tableView.endUpdates()
     }
 }
 

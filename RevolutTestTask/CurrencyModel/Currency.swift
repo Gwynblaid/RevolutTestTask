@@ -36,7 +36,7 @@ extension Currency {
                                                               "SGD", "THB", "TRY",
                                                               "USD", "ZAR", "EUR"]
     
-    private static var allCurrencies: [Currency] = {
+    static var allCurrencies: [Currency] = {
         guard let filePath = Bundle.main.path(forResource: "country-code-to-currency-code-mapping", ofType: "csv") else {
             return []
         }

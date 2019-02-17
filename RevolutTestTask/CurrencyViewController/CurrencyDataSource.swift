@@ -5,13 +5,25 @@ import Foundation
 import UIKit
 
 class DataSource: DataSourceProtocol {
+    private struct UserDefaultsParams {
+        static let defaultCurrencyCode = "EUR"
+        static let currentCurrencyKey = "CurrentCurrencyKey"
+    }
+    
     private var sections: [Section] = []
     private var networkHelper: NetworkHelperProtocol
     
-    var delegate: DataSourceDelegate?
+    var currentCurrency: Currency {
+        didSet {
+            UserDefaults.standard.set(currentCurrency.code, forKey: UserDefaultsParams.currentCurrencyKey)
+        }
+    }
+    weak var delegate: DataSourceDelegate?
     
     init(networkHelper: NetworkHelperProtocol) {
         self.networkHelper = networkHelper
+        let code = UserDefaults.standard.string(forKey: UserDefaultsParams.currentCurrencyKey) ?? UserDefaultsParams.defaultCurrencyCode
+        currentCurrency = Currency(code: code)
     }
 }
 
@@ -38,7 +50,7 @@ extension DataSource {
     }
     
     func loadData(completion: @escaping (Bool) -> ()) {
-        _ = networkHelper.load(resource: Resource<CurrencyResponse>.currencyGetResource(for: "RUB")) {[weak self] result in
+        _ = networkHelper.load(resource: Resource<CurrencyResponse>.currencyGetResource(for: currentCurrency.code)) {[weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error):

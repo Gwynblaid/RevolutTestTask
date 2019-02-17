@@ -15,7 +15,9 @@
 		189DD5F12219FD5600C91E20 /* SectionsCellsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F02219FD5600C91E20 /* SectionsCellsModels.swift */; };
 		189DD5F32219FD7800C91E20 /* CurrencyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F22219FD7800C91E20 /* CurrencyCellModel.swift */; };
 		189DD5F52219FDBB00C91E20 /* CurrencyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F42219FDBB00C91E20 /* CurrencyDataSource.swift */; };
-		189DD5F72219FE8A00C91E20 /* CurrencyTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F62219FE8A00C91E20 /* CurrencyTableViewDataSource.swift */; };
+		189DD5F72219FE8A00C91E20 /* CurrencyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F62219FE8A00C91E20 /* CurrencyInteractor.swift */; };
+		189DD600221A172900C91E20 /* CurrencyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5FF221A172900C91E20 /* CurrencyPickerViewController.swift */; };
+		189DD602221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD601221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift */; };
 		5FE73E3805CA5648B62A2B6E /* Pods_RevolutTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB97FCB9BDDB9431C50F8ED /* Pods_RevolutTestTask.framework */; };
 		84BE2DB82212D75E00416E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DB72212D75E00416E4F /* AppDelegate.swift */; };
 		84BE2DBA2212D75E00416E4F /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DB92212D75E00416E4F /* CurrencyViewController.swift */; };
@@ -58,7 +60,9 @@
 		189DD5F02219FD5600C91E20 /* SectionsCellsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCellsModels.swift; sourceTree = "<group>"; };
 		189DD5F22219FD7800C91E20 /* CurrencyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellModel.swift; sourceTree = "<group>"; };
 		189DD5F42219FDBB00C91E20 /* CurrencyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataSource.swift; sourceTree = "<group>"; };
-		189DD5F62219FE8A00C91E20 /* CurrencyTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewDataSource.swift; sourceTree = "<group>"; };
+		189DD5F62219FE8A00C91E20 /* CurrencyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInteractor.swift; sourceTree = "<group>"; };
+		189DD5FF221A172900C91E20 /* CurrencyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewController.swift; sourceTree = "<group>"; };
+		189DD601221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewDataSource.swift; sourceTree = "<group>"; };
 		1B9C3853146596FF9AD1053C /* Pods-RevolutTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutTestTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RevolutTestTask/Pods-RevolutTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		84BE2DB42212D75E00416E4F /* RevolutTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevolutTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BE2DB72212D75E00416E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,7 +124,7 @@
 			children = (
 				189DD5F9221A012E00C91E20 /* Cells */,
 				84BE2DB92212D75E00416E4F /* CurrencyViewController.swift */,
-				189DD5F62219FE8A00C91E20 /* CurrencyTableViewDataSource.swift */,
+				189DD5F62219FE8A00C91E20 /* CurrencyInteractor.swift */,
 				189DD5F42219FDBB00C91E20 /* CurrencyDataSource.swift */,
 			);
 			path = CurrencyViewController;
@@ -157,6 +161,15 @@
 			path = CurrencyModel;
 			sourceTree = "<group>";
 		};
+		189DD5FE221A170100C91E20 /* CurrencyPickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				189DD5FF221A172900C91E20 /* CurrencyPickerViewController.swift */,
+				189DD601221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift */,
+			);
+			path = CurrencyPickerViewController;
+			sourceTree = "<group>";
+		};
 		3C678625C9BD9C4C58B3B921 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +202,7 @@
 		84BE2DB62212D75E00416E4F /* RevolutTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				189DD5FE221A170100C91E20 /* CurrencyPickerViewController */,
 				189DD5FD221A01A700C91E20 /* CurrencyModel */,
 				189DD5FC221A017700C91E20 /* TableViewModule */,
 				189DD5F8221A00FA00C91E20 /* CurrencyViewController */,
@@ -401,6 +415,7 @@
 				84BE2DD62214824B00416E4F /* Resource+ObjectMapper.swift in Sources */,
 				189DD5E92219FBE300C91E20 /* Currency.swift in Sources */,
 				84BE2DDC2214824B00416E4F /* OperationCompletion.swift in Sources */,
+				189DD602221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift in Sources */,
 				84BE2DFD2219766600416E4F /* CurrencyTableViewCell.swift in Sources */,
 				84BE2E032219815C00416E4F /* CurrencyResource.swift in Sources */,
 				84BE2DDA2214824B00416E4F /* URLRequest+Resource.swift in Sources */,
@@ -409,7 +424,8 @@
 				84BE2DD72214824B00416E4F /* NetworkHelper.swift in Sources */,
 				84BE2DB82212D75E00416E4F /* AppDelegate.swift in Sources */,
 				84BE2DDD2214824B00416E4F /* Dictionary+Networking.swift in Sources */,
-				189DD5F72219FE8A00C91E20 /* CurrencyTableViewDataSource.swift in Sources */,
+				189DD600221A172900C91E20 /* CurrencyPickerViewController.swift in Sources */,
+				189DD5F72219FE8A00C91E20 /* CurrencyInteractor.swift in Sources */,
 				84BE2DDE2214824B00416E4F /* СancellationProtocol.swift in Sources */,
 				189DD5F32219FD7800C91E20 /* CurrencyCellModel.swift in Sources */,
 				189DD5EB2219FC1C00C91E20 /* CurrencyRate.swift in Sources */,

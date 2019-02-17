@@ -4,13 +4,13 @@
 import Foundation
 import UIKit
 
-protocol DataSourceDelegate {
+protocol DataSourceDelegate: class {
     func dataReloaded()
-    func dataChanged(in section: Int)
-    func dataChanged(at indexPath: IndexPath)
 }
 
 protocol DataSourceProtocol {
+    var currentCurrency: Currency { get set }
+    
     var numberOfSections: Int { get }
     var delegate: DataSourceDelegate? { get set }
     
