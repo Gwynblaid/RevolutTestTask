@@ -3,7 +3,7 @@
 
 import Foundation
 
-extension Resource where ResourceType == Currency {
+extension Resource where ResourceType == CurrencyResponse {
 	static func currencyGetResource(for currency: String) -> Resource<ResourceType> {
 		let url = URL(string: "https://revolut.duckdns.org/latest?base=\(currency)")!
 		return self.init(url: url, method: HttpMethod.get, headers: nil)
