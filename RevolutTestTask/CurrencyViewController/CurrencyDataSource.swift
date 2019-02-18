@@ -12,6 +12,9 @@ class DataSource: DataSourceProtocol {
     
     private var sections: [Section] = []
     private var networkHelper: NetworkHelperProtocol
+    private var refreshTimeInterval: TimeInterval
+    private var timer: Timer?
+    private weak var requestCancellation: Cancellation?
     
     var currentCurrency: Currency {
         didSet {
@@ -20,10 +23,11 @@ class DataSource: DataSourceProtocol {
     }
     weak var delegate: DataSourceDelegate?
     
-    init(networkHelper: NetworkHelperProtocol) {
+    init(networkHelper: NetworkHelperProtocol, refreshTimeInterval: TimeInterval = 60) {
         self.networkHelper = networkHelper
         let code = UserDefaults.standard.string(forKey: UserDefaultsParams.currentCurrencyKey) ?? UserDefaultsParams.defaultCurrencyCode
         currentCurrency = Currency(code: code)
+        self.refreshTimeInterval = refreshTimeInterval
     }
 }
 
@@ -49,15 +53,13 @@ extension DataSource {
         return sections[indexPath.section].models[indexPath.row]
     }
     
-    func loadData(completion: @escaping (Bool) -> ()) {
-        _ = networkHelper.load(resource: Resource<CurrencyResponse>.currencyGetResource(for: currentCurrency.code)) {[weak self] result in
+    private func requestCurrencies(_ completion: @escaping (Bool) -> ()) {
+        requestCancellation?.cancel()
+        requestCancellation = networkHelper.load(resource: Resource<CurrencyResponse>.currencyGetResource(for: currentCurrency.code)) {[weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error):
                 print(error)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
-                    self?.loadData(completion: completion)
-                })
             case .success(let currency):
                 let cellModels: [CellModel] = currency.rates.sorted(by: { (left, right) -> Bool in
                     left.currency.code < right.currency.code
@@ -66,5 +68,23 @@ extension DataSource {
                 completion(true)
             }
         }
+    }
+    
+    func loadData(completion: @escaping (Bool) -> ()) {
+        requestCurrencies(completion)
+        timer?.invalidate()
+        print(Date())
+        timer = Timer.scheduledTimer(withTimeInterval: refreshTimeInterval, repeats: true, block: { [weak self] timer in
+            print(Date())
+            guard let self = self else {
+                timer.invalidate()
+                return
+            }
+            self.requestCurrencies({ result in
+                DispatchQueue.main.async { [weak self] in
+                    self?.delegate?.dataReloaded()
+                }
+            })
+        })
     }
 }

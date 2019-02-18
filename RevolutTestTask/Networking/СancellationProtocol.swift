@@ -3,7 +3,7 @@
 
 import Foundation
 
-protocol Cancellation {
+protocol Cancellation: class {
 	//Функия отмены запроса
 	func cancel()
 }
