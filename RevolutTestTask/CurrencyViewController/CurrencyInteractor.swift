@@ -30,27 +30,21 @@ extension CurrencyInteractor: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return dataSource.cellModel(for: indexPath).cell(for: tableView)
+		return dataSource.cellModel(for: indexPath)?.cell(for: tableView) ?? UITableViewCell(style: .default, reuseIdentifier: nil)
     }
 }
 
 // MARK: - UITableViewDelegate
 extension CurrencyInteractor: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return dataSource.cellModel(for: indexPath).rowHeight
+        return dataSource.cellModel(for: indexPath)?.rowHeight ?? 0
     }
 }
 
 // MARK: - Public
 extension CurrencyInteractor {
     func reloadData() {
-        dataSource.loadData { result in
-            if result {
-                DispatchQueue.main.async { [weak self] in
-                    self?.tableView.reloadData()
-                }
-            }
-        }
+		dataSource.loadData { _ in }
     }
     
     var currentCurrency: Currency {
@@ -70,7 +64,9 @@ extension CurrencyInteractor {
 // MARK: - DataSourceDelegate
 extension CurrencyInteractor: DataSourceDelegate {
     func dataReloaded() {
-        tableView.reloadData()
+		DispatchQueue.main.async { [weak self] in
+			self?.tableView.reloadData()
+		}
     }
 }
 

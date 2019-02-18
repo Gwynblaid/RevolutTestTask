@@ -19,6 +19,9 @@ class FakeNetworkHelper: NetworkHelperProtocol {
 	private let errorResponse = ["error":"Code invalid"]
 	private let textResonse = "404 error"
 	
+	var ratesCount: Int {
+		return (rubResponse["rates"] as! [String: Double]).count
+	}
 	
 	func load<A>(resource: Resource<A>, completion: @escaping (OperationCompletion<A>) -> ()) -> Cancellation? {
 		if A.self is CurrencyResponse.Type {

@@ -20,5 +20,5 @@ protocol DataSourceProtocol {
     func loadData(completion: @escaping (Bool) -> ())
     
     func sectionInfo(for section: Int) -> SectionInfo?
-    func cellModel(for indexPath: IndexPath) -> CellModel
+    func cellModel(for indexPath: IndexPath) -> CellModel?
 }

@@ -4,7 +4,7 @@
 import UIKit
 
 class CurrencyViewController: UIViewController {
-	lazy private var tableViewDataSource: CurrencyInteractor = CurrencyInteractor(dataSource: DataSource(networkHelper: NetworkHelper()), tableView: tableView)
+	lazy private var tableViewDataSource: CurrencyInteractor = CurrencyInteractor(dataSource: CurrenciesDataSource(networkHelper: NetworkHelper()), tableView: tableView)
 	
     private lazy var tableView: UITableView = UITableView(frame: view.bounds)
     private lazy var currencyButton = UIButton(type: .custom)

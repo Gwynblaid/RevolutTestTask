@@ -4,13 +4,17 @@
 import Foundation
 import UIKit
 
-class DataSource: DataSourceProtocol {
+class CurrenciesDataSource: DataSourceProtocol {
     private struct UserDefaultsParams {
         static let defaultCurrencyCode = "EUR"
         static let currentCurrencyKey = "CurrentCurrencyKey"
     }
     
-    private var sections: [Section] = []
+	private var sections: [Section] = [] {
+		didSet {
+			delegate?.dataReloaded()
+		}
+	}
     private var networkHelper: NetworkHelperProtocol
     private var refreshTimeInterval: TimeInterval
     private var timer: Timer?
@@ -32,7 +36,7 @@ class DataSource: DataSourceProtocol {
 }
 
 // MARK: - DataSourceProtocol
-extension DataSource {
+extension CurrenciesDataSource {
     var numberOfSections: Int {
         return sections.count
     }
@@ -42,15 +46,24 @@ extension DataSource {
     }
     
     func rows(in section: Int) -> Int {
-        return sections[section].models.count
+		if section < sections.count {
+			return sections[section].models.count
+		}
+		return 0
     }
     
     func sectionInfo(for section: Int) -> SectionInfo? {
-        return sections[section].info
+		if section < sections.count {
+			return sections[section].info
+		}
+		return nil
     }
     
-    func cellModel(for indexPath: IndexPath) -> CellModel {
-        return sections[indexPath.section].models[indexPath.row]
+    func cellModel(for indexPath: IndexPath) -> CellModel? {
+		if indexPath.section < sections.count && indexPath.row < sections[indexPath.section].models.count {
+			return sections[indexPath.section].models[indexPath.row]
+		}
+		return nil
     }
     
     private func requestCurrencies(_ completion: @escaping (Bool) -> ()) {
@@ -60,6 +73,7 @@ extension DataSource {
             switch result {
             case .failure(let error):
                 print(error)
+				completion(false)
             case .success(let currency):
                 let cellModels: [CellModel] = currency.rates.sorted(by: { (left, right) -> Bool in
                     left.currency.code < right.currency.code
@@ -73,18 +87,13 @@ extension DataSource {
     func loadData(completion: @escaping (Bool) -> ()) {
         requestCurrencies(completion)
         timer?.invalidate()
-        print(Date())
         timer = Timer.scheduledTimer(withTimeInterval: refreshTimeInterval, repeats: true, block: { [weak self] timer in
             print(Date())
             guard let self = self else {
                 timer.invalidate()
                 return
             }
-            self.requestCurrencies({ result in
-                DispatchQueue.main.async { [weak self] in
-                    self?.delegate?.dataReloaded()
-                }
-            })
+            self.requestCurrencies{ _ in }
         })
     }
 }
