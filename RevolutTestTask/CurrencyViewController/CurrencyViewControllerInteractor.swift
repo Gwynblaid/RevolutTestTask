@@ -4,7 +4,7 @@
 import Foundation
 import UIKit
 
-class CurrencyInteractor: NSObject {
+class CurrencyViewControllerInteractor: NSObject {
     var dataSource: DataSourceProtocol
     var tableView: UITableView
     
@@ -20,7 +20,7 @@ class CurrencyInteractor: NSObject {
 }
 
 // MARK: - UITableViewDataSource
-extension CurrencyInteractor: UITableViewDataSource {
+extension CurrencyViewControllerInteractor: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.numberOfSections
     }
@@ -35,14 +35,14 @@ extension CurrencyInteractor: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension CurrencyInteractor: UITableViewDelegate {
+extension CurrencyViewControllerInteractor: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return dataSource.cellModel(for: indexPath)?.rowHeight ?? 0
     }
 }
 
 // MARK: - Public
-extension CurrencyInteractor {
+extension CurrencyViewControllerInteractor {
     func reloadData() {
 		dataSource.loadData { _ in }
     }
@@ -62,7 +62,7 @@ extension CurrencyInteractor {
 }
 
 // MARK: - DataSourceDelegate
-extension CurrencyInteractor: DataSourceDelegate {
+extension CurrencyViewControllerInteractor: DataSourceDelegate {
     func dataReloaded() {
 		DispatchQueue.main.async { [weak self] in
 			self?.tableView.reloadData()

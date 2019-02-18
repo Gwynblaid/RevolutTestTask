@@ -15,7 +15,7 @@
 		189DD5F12219FD5600C91E20 /* SectionsCellsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F02219FD5600C91E20 /* SectionsCellsModels.swift */; };
 		189DD5F32219FD7800C91E20 /* CurrencyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F22219FD7800C91E20 /* CurrencyCellModel.swift */; };
 		189DD5F52219FDBB00C91E20 /* CurrencyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F42219FDBB00C91E20 /* CurrencyDataSource.swift */; };
-		189DD5F72219FE8A00C91E20 /* CurrencyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F62219FE8A00C91E20 /* CurrencyInteractor.swift */; };
+		189DD5F72219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F62219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift */; };
 		189DD600221A172900C91E20 /* CurrencyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5FF221A172900C91E20 /* CurrencyPickerViewController.swift */; };
 		189DD602221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD601221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift */; };
 		5FE73E3805CA5648B62A2B6E /* Pods_RevolutTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB97FCB9BDDB9431C50F8ED /* Pods_RevolutTestTask.framework */; };
@@ -63,7 +63,7 @@
 		189DD5F02219FD5600C91E20 /* SectionsCellsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCellsModels.swift; sourceTree = "<group>"; };
 		189DD5F22219FD7800C91E20 /* CurrencyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellModel.swift; sourceTree = "<group>"; };
 		189DD5F42219FDBB00C91E20 /* CurrencyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataSource.swift; sourceTree = "<group>"; };
-		189DD5F62219FE8A00C91E20 /* CurrencyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInteractor.swift; sourceTree = "<group>"; };
+		189DD5F62219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewControllerInteractor.swift; sourceTree = "<group>"; };
 		189DD5FF221A172900C91E20 /* CurrencyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewController.swift; sourceTree = "<group>"; };
 		189DD601221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewDataSource.swift; sourceTree = "<group>"; };
 		1B9C3853146596FF9AD1053C /* Pods-RevolutTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutTestTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RevolutTestTask/Pods-RevolutTestTask.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 			children = (
 				189DD5F9221A012E00C91E20 /* Cells */,
 				84BE2DB92212D75E00416E4F /* CurrencyViewController.swift */,
-				189DD5F62219FE8A00C91E20 /* CurrencyInteractor.swift */,
+				189DD5F62219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift */,
 				189DD5F42219FDBB00C91E20 /* CurrencyDataSource.swift */,
 			);
 			path = CurrencyViewController;
@@ -434,7 +434,7 @@
 				84BE2DB82212D75E00416E4F /* AppDelegate.swift in Sources */,
 				84BE2DDD2214824B00416E4F /* Dictionary+Networking.swift in Sources */,
 				189DD600221A172900C91E20 /* CurrencyPickerViewController.swift in Sources */,
-				189DD5F72219FE8A00C91E20 /* CurrencyInteractor.swift in Sources */,
+				189DD5F72219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift in Sources */,
 				84BE2DDE2214824B00416E4F /* СancellationProtocol.swift in Sources */,
 				189DD5F32219FD7800C91E20 /* CurrencyCellModel.swift in Sources */,
 				189DD5EB2219FC1C00C91E20 /* CurrencyRate.swift in Sources */,
