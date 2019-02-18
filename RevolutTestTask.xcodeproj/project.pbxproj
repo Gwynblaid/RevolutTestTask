@@ -39,6 +39,8 @@
 		84BE2DFF22197BA600416E4F /* CurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DFE22197BA600416E4F /* CurrencyResponse.swift */; };
 		84BE2E032219815C00416E4F /* CurrencyResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2E022219815C00416E4F /* CurrencyResource.swift */; };
 		84BE2E0522199EB700416E4F /* CurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BE2E0422199EB700416E4F /* CurrencyTableViewCell.xib */; };
+		84BE2E07221A9C6600416E4F /* TestCurrencyParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2E06221A9C6600416E4F /* TestCurrencyParser.swift */; };
+		84BE2E09221A9CAE00416E4F /* FakeNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2E08221A9CAE00416E4F /* FakeNetworkHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		84BE2DFE22197BA600416E4F /* CurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResponse.swift; sourceTree = "<group>"; };
 		84BE2E022219815C00416E4F /* CurrencyResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResource.swift; sourceTree = "<group>"; };
 		84BE2E0422199EB700416E4F /* CurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyTableViewCell.xib; sourceTree = "<group>"; };
+		84BE2E06221A9C6600416E4F /* TestCurrencyParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCurrencyParser.swift; sourceTree = "<group>"; };
+		84BE2E08221A9CAE00416E4F /* FakeNetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkHelper.swift; sourceTree = "<group>"; };
 		85960E99F1D4B4D64336C8D8 /* Pods-RevolutTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutTestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevolutTestTask/Pods-RevolutTestTask.release.xcconfig"; sourceTree = "<group>"; };
 		DAB97FCB9BDDB9431C50F8ED /* Pods_RevolutTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevolutTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -239,6 +243,8 @@
 				84BE2DE52214833500416E4F /* RevolutTestTaskTests.swift */,
 				84BE2DE72214833500416E4F /* Info.plist */,
 				84BE2DED2214834A00416E4F /* ApiTests.swift */,
+				84BE2E06221A9C6600416E4F /* TestCurrencyParser.swift */,
+				84BE2E08221A9CAE00416E4F /* FakeNetworkHelper.swift */,
 			);
 			path = RevolutTestTaskTests;
 			sourceTree = "<group>";
@@ -438,8 +444,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BE2E07221A9C6600416E4F /* TestCurrencyParser.swift in Sources */,
 				84BE2DEE2214834A00416E4F /* ApiTests.swift in Sources */,
 				84BE2DE62214833500416E4F /* RevolutTestTaskTests.swift in Sources */,
+				84BE2E09221A9CAE00416E4F /* FakeNetworkHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
