@@ -5,7 +5,7 @@ import Foundation
 
 struct CurrencyRate {
     let currency: Currency
-    let price: Double
+    var price: Double
 }
 
 extension CurrencyRate {

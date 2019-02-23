@@ -44,12 +44,15 @@ extension Currency {
             return []
         }
         let stringArray = csvString.split(separator: "\n")
-        return stringArray.compactMap({
-            $0.split(separator: ",")
-        }).compactMap{ substrings in
-            let strings = substrings.compactMap { String($0) }
-            return Currency(stringArray: strings)
-        }
+		let result: [Currency] = stringArray.compactMap({
+			$0.split(separator: ",")
+		}).compactMap{ substrings in
+			let strings = substrings.compactMap { String($0) }
+			return Currency(stringArray: strings)
+		}
+		return result.sorted {
+			$0.code < $1.code
+		}
     }()
     
     init(code: String) {

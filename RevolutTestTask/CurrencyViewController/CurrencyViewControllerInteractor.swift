@@ -39,6 +39,16 @@ extension CurrencyViewControllerInteractor: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return dataSource.cellModel(for: indexPath)?.rowHeight ?? 0
     }
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		dataSource.selectCell(at: indexPath)
+		DispatchQueue.main.async {
+			if let cellAction = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CellActionProtocol {
+				tableView.setContentOffset(.zero, animated: false)
+				cellAction.cellSelectedAction()
+			}
+		}
+	}
 }
 
 // MARK: - Public
@@ -46,27 +56,28 @@ extension CurrencyViewControllerInteractor {
     func reloadData() {
 		dataSource.loadData { _ in }
     }
-    
-    var currentCurrency: Currency {
-        set {
-            dataSource.currentCurrency = newValue
-        }
-        get {
-            return dataSource.currentCurrency
-        }
-    }
-    
-    var availiableCurrecies: [Currency] {
-        return Currency.allCurrencies
-    }
 }
 
 // MARK: - DataSourceDelegate
 extension CurrencyViewControllerInteractor: DataSourceDelegate {
+	func reload(section: Int) {
+		tableView.reloadSections(IndexSet(arrayLiteral: 1), with: .none)
+	}
+	
+	func willBeginUpdates() {
+		tableView.beginUpdates()
+	}
+	
+	func move(_ from: IndexPath, to: IndexPath) {
+		tableView.moveRow(at: from, to: to)
+	}
+	
     func dataReloaded() {
-		DispatchQueue.main.async { [weak self] in
-			self?.tableView.reloadData()
-		}
+		tableView.reloadData()
     }
+	
+	func didEndUpdates() {
+		tableView.endUpdates()
+	}
 }
 

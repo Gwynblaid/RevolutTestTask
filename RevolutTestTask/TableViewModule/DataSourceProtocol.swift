@@ -5,11 +5,15 @@ import Foundation
 import UIKit
 
 protocol DataSourceDelegate: class {
-    func dataReloaded()
+	func willBeginUpdates()
+	func dataReloaded()
+	func move(_ from: IndexPath, to: IndexPath)
+	func reload(section: Int)
+	func didEndUpdates()
 }
 
 protocol DataSourceProtocol {
-    var currentCurrency: Currency { get set }
+    var currentCurrency: CurrencyRate { get set }
     
     var numberOfSections: Int { get }
     var delegate: DataSourceDelegate? { get set }
@@ -21,4 +25,5 @@ protocol DataSourceProtocol {
     
     func sectionInfo(for section: Int) -> SectionInfo?
     func cellModel(for indexPath: IndexPath) -> CellModel?
+	func selectCell(at indexPath: IndexPath)
 }

@@ -4,7 +4,7 @@
 import UIKit
 
 class CurrencyViewController: UIViewController {
-	lazy private var interactor: CurrencyViewControllerInteractor = CurrencyViewControllerInteractor(dataSource: CurrenciesDataSource(networkHelper: NetworkHelper()), tableView: tableView)
+	lazy private var interactor: CurrencyViewControllerInteractor = CurrencyViewControllerInteractor(dataSource: CurrenciesDataSource(networkHelper: NetworkHelper(), refreshTimeInterval: 1), tableView: tableView)
 	
     private lazy var tableView: UITableView = UITableView(frame: view.bounds)
     private lazy var currencyButton = UIButton(type: .custom)
@@ -25,7 +25,6 @@ class CurrencyViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         view.backgroundColor = .white
-        currencyButton.setTitle(interactor.currentCurrency.code, for: .normal)
 		interactor.reloadData()
 		// Do any additional setup after loading the view, typically from a nib.
     }
@@ -34,19 +33,19 @@ class CurrencyViewController: UIViewController {
 // MARK: - Actions
 extension CurrencyViewController {
     @IBAction func changeCurrenCurrencyTapped(_ sender: Any?) {
-        let viewController = CurrencyPickerViewController(selected: interactor.currentCurrency, availiable: interactor.availiableCurrecies)
-        viewController.modalPresentationStyle = .overFullScreen
-        viewController.delegate = self
-        present(viewController, animated: false)
+//        let viewController = CurrencyPickerViewController(selected: interactor.currentCurrency, availiable: interactor.availiableCurrecies)
+//        viewController.modalPresentationStyle = .overFullScreen
+//        viewController.delegate = self
+//        present(viewController, animated: false)
     }
 }
 
-// MARK - CurrencyPickerViewControllerDelegate
-extension CurrencyViewController: CurrencyPickerViewControllerDelegate {
-    func currencyPickerViewController(_ controller: CurrencyPickerViewController, didSelect currency: Currency) {
-        interactor.currentCurrency = currency
-        currencyButton.setTitle(currency.code, for: .normal)
-        interactor.reloadData()
-        controller.dismiss(animated: false)
-    }
-}
+//// MARK - CurrencyPickerViewControllerDelegate
+//extension CurrencyViewController: CurrencyPickerViewControllerDelegate {
+//    func currencyPickerViewController(_ controller: CurrencyPickerViewController, didSelect currency: Currency) {
+//        interactor.currentCurrency = currency
+//        currencyButton.setTitle(currency.code, for: .normal)
+//        interactor.reloadData()
+//        controller.dismiss(animated: false)
+//    }
+//}

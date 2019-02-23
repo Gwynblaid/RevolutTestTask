@@ -42,6 +42,7 @@
 		84BE2E07221A9C6600416E4F /* TestCurrencyParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2E06221A9C6600416E4F /* TestCurrencyParser.swift */; };
 		84BE2E09221A9CAE00416E4F /* FakeNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2E08221A9CAE00416E4F /* FakeNetworkHelper.swift */; };
 		84BE2E0B221AB61500416E4F /* TestCurrenciesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2E0A221AB61500416E4F /* TestCurrenciesDataSource.swift */; };
+		84DAE4D62221C146005591A6 /* CellActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DAE4D52221C146005591A6 /* CellActionProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		84BE2E06221A9C6600416E4F /* TestCurrencyParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCurrencyParser.swift; sourceTree = "<group>"; };
 		84BE2E08221A9CAE00416E4F /* FakeNetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkHelper.swift; sourceTree = "<group>"; };
 		84BE2E0A221AB61500416E4F /* TestCurrenciesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCurrenciesDataSource.swift; sourceTree = "<group>"; };
+		84DAE4D52221C146005591A6 /* CellActionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellActionProtocol.swift; sourceTree = "<group>"; };
 		85960E99F1D4B4D64336C8D8 /* Pods-RevolutTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutTestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevolutTestTask/Pods-RevolutTestTask.release.xcconfig"; sourceTree = "<group>"; };
 		DAB97FCB9BDDB9431C50F8ED /* Pods_RevolutTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevolutTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 				84BE2DB92212D75E00416E4F /* CurrencyViewController.swift */,
 				189DD5F62219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift */,
 				189DD5F42219FDBB00C91E20 /* CurrencyDataSource.swift */,
+				84DAE4D52221C146005591A6 /* CellActionProtocol.swift */,
 			);
 			path = CurrencyViewController;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				84BE2DD82214824B00416E4F /* NetworkHelperProtocol.swift in Sources */,
 				84BE2DF0221484D800416E4F /* String+Networking.swift in Sources */,
 				189DD5EF2219FD0500C91E20 /* DataSourceProtocol.swift in Sources */,
+				84DAE4D62221C146005591A6 /* CellActionProtocol.swift in Sources */,
 				189DD5ED2219FC5200C91E20 /* CurrencyErrorResponse.swift in Sources */,
 				84BE2DBA2212D75E00416E4F /* CurrencyViewController.swift in Sources */,
 				189DD5F52219FDBB00C91E20 /* CurrencyDataSource.swift in Sources */,
