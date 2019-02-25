@@ -11,13 +11,14 @@
 		189DD5E92219FBE300C91E20 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5E82219FBE300C91E20 /* Currency.swift */; };
 		189DD5EB2219FC1C00C91E20 /* CurrencyRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5EA2219FC1C00C91E20 /* CurrencyRate.swift */; };
 		189DD5ED2219FC5200C91E20 /* CurrencyErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5EC2219FC5200C91E20 /* CurrencyErrorResponse.swift */; };
-		189DD5EF2219FD0500C91E20 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5EE2219FD0500C91E20 /* DataSourceProtocol.swift */; };
+		189DD5EF2219FD0500C91E20 /* CurrencyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5EE2219FD0500C91E20 /* CurrencyInteractor.swift */; };
 		189DD5F12219FD5600C91E20 /* SectionsCellsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F02219FD5600C91E20 /* SectionsCellsModels.swift */; };
 		189DD5F32219FD7800C91E20 /* CurrencyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F22219FD7800C91E20 /* CurrencyCellModel.swift */; };
 		189DD5F52219FDBB00C91E20 /* CurrencyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F42219FDBB00C91E20 /* CurrencyDataSource.swift */; };
-		189DD5F72219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F62219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift */; };
+		189DD5F72219FE8A00C91E20 /* CurrencyViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5F62219FE8A00C91E20 /* CurrencyViewControllerPresenter.swift */; };
 		189DD600221A172900C91E20 /* CurrencyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD5FF221A172900C91E20 /* CurrencyPickerViewController.swift */; };
 		189DD602221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DD601221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift */; };
+		18E85BA7222368EB0071118C /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E85BA6222368EB0071118C /* CurrencyController.swift */; };
 		5FE73E3805CA5648B62A2B6E /* Pods_RevolutTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB97FCB9BDDB9431C50F8ED /* Pods_RevolutTestTask.framework */; };
 		84BE2DB82212D75E00416E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DB72212D75E00416E4F /* AppDelegate.swift */; };
 		84BE2DBA2212D75E00416E4F /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DB92212D75E00416E4F /* CurrencyViewController.swift */; };
@@ -32,7 +33,6 @@
 		84BE2DDC2214824B00416E4F /* OperationCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DD22214824B00416E4F /* OperationCompletion.swift */; };
 		84BE2DDD2214824B00416E4F /* Dictionary+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DD32214824B00416E4F /* Dictionary+Networking.swift */; };
 		84BE2DDE2214824B00416E4F /* СancellationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DD42214824B00416E4F /* СancellationProtocol.swift */; };
-		84BE2DE62214833500416E4F /* RevolutTestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DE52214833500416E4F /* RevolutTestTaskTests.swift */; };
 		84BE2DEE2214834A00416E4F /* ApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DED2214834A00416E4F /* ApiTests.swift */; };
 		84BE2DF0221484D800416E4F /* String+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DEF221484D800416E4F /* String+Networking.swift */; };
 		84BE2DFD2219766600416E4F /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE2DFC2219766600416E4F /* CurrencyTableViewCell.swift */; };
@@ -60,13 +60,14 @@
 		189DD5E82219FBE300C91E20 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		189DD5EA2219FC1C00C91E20 /* CurrencyRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRate.swift; sourceTree = "<group>"; };
 		189DD5EC2219FC5200C91E20 /* CurrencyErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyErrorResponse.swift; sourceTree = "<group>"; };
-		189DD5EE2219FD0500C91E20 /* DataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceProtocol.swift; sourceTree = "<group>"; };
+		189DD5EE2219FD0500C91E20 /* CurrencyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInteractor.swift; sourceTree = "<group>"; };
 		189DD5F02219FD5600C91E20 /* SectionsCellsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCellsModels.swift; sourceTree = "<group>"; };
 		189DD5F22219FD7800C91E20 /* CurrencyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellModel.swift; sourceTree = "<group>"; };
 		189DD5F42219FDBB00C91E20 /* CurrencyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataSource.swift; sourceTree = "<group>"; };
-		189DD5F62219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewControllerInteractor.swift; sourceTree = "<group>"; };
+		189DD5F62219FE8A00C91E20 /* CurrencyViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewControllerPresenter.swift; sourceTree = "<group>"; };
 		189DD5FF221A172900C91E20 /* CurrencyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewController.swift; sourceTree = "<group>"; };
 		189DD601221A1C8C00C91E20 /* CurrencyPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewDataSource.swift; sourceTree = "<group>"; };
+		18E85BA6222368EB0071118C /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
 		1B9C3853146596FF9AD1053C /* Pods-RevolutTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutTestTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RevolutTestTask/Pods-RevolutTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		84BE2DB42212D75E00416E4F /* RevolutTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevolutTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BE2DB72212D75E00416E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		84BE2DD32214824B00416E4F /* Dictionary+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Networking.swift"; sourceTree = "<group>"; };
 		84BE2DD42214824B00416E4F /* СancellationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "СancellationProtocol.swift"; sourceTree = "<group>"; };
 		84BE2DE32214833500416E4F /* RevolutTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RevolutTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		84BE2DE52214833500416E4F /* RevolutTestTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevolutTestTaskTests.swift; sourceTree = "<group>"; };
 		84BE2DE72214833500416E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BE2DED2214834A00416E4F /* ApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTests.swift; sourceTree = "<group>"; };
 		84BE2DEF221484D800416E4F /* String+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Networking.swift"; sourceTree = "<group>"; };
@@ -132,9 +132,11 @@
 			children = (
 				189DD5F9221A012E00C91E20 /* Cells */,
 				84BE2DB92212D75E00416E4F /* CurrencyViewController.swift */,
-				189DD5F62219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift */,
+				189DD5EE2219FD0500C91E20 /* CurrencyInteractor.swift */,
+				189DD5F62219FE8A00C91E20 /* CurrencyViewControllerPresenter.swift */,
 				189DD5F42219FDBB00C91E20 /* CurrencyDataSource.swift */,
 				84DAE4D52221C146005591A6 /* CellActionProtocol.swift */,
+				18E85BA6222368EB0071118C /* CurrencyController.swift */,
 			);
 			path = CurrencyViewController;
 			sourceTree = "<group>";
@@ -153,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				189DD5F02219FD5600C91E20 /* SectionsCellsModels.swift */,
-				189DD5EE2219FD0500C91E20 /* DataSourceProtocol.swift */,
 			);
 			path = TableViewModule;
 			sourceTree = "<group>";
@@ -245,7 +246,6 @@
 		84BE2DE42214833500416E4F /* RevolutTestTaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				84BE2DE52214833500416E4F /* RevolutTestTaskTests.swift */,
 				84BE2DE72214833500416E4F /* Info.plist */,
 				84BE2DED2214834A00416E4F /* ApiTests.swift */,
 				84BE2E06221A9C6600416E4F /* TestCurrencyParser.swift */,
@@ -420,7 +420,7 @@
 			files = (
 				84BE2DD82214824B00416E4F /* NetworkHelperProtocol.swift in Sources */,
 				84BE2DF0221484D800416E4F /* String+Networking.swift in Sources */,
-				189DD5EF2219FD0500C91E20 /* DataSourceProtocol.swift in Sources */,
+				189DD5EF2219FD0500C91E20 /* CurrencyInteractor.swift in Sources */,
 				84DAE4D62221C146005591A6 /* CellActionProtocol.swift in Sources */,
 				189DD5ED2219FC5200C91E20 /* CurrencyErrorResponse.swift in Sources */,
 				84BE2DBA2212D75E00416E4F /* CurrencyViewController.swift in Sources */,
@@ -432,13 +432,14 @@
 				84BE2DFD2219766600416E4F /* CurrencyTableViewCell.swift in Sources */,
 				84BE2E032219815C00416E4F /* CurrencyResource.swift in Sources */,
 				84BE2DDA2214824B00416E4F /* URLRequest+Resource.swift in Sources */,
+				18E85BA7222368EB0071118C /* CurrencyController.swift in Sources */,
 				189DD5F12219FD5600C91E20 /* SectionsCellsModels.swift in Sources */,
 				84BE2DDB2214824B00416E4F /* HttpMethod.swift in Sources */,
 				84BE2DD72214824B00416E4F /* NetworkHelper.swift in Sources */,
 				84BE2DB82212D75E00416E4F /* AppDelegate.swift in Sources */,
 				84BE2DDD2214824B00416E4F /* Dictionary+Networking.swift in Sources */,
 				189DD600221A172900C91E20 /* CurrencyPickerViewController.swift in Sources */,
-				189DD5F72219FE8A00C91E20 /* CurrencyViewControllerInteractor.swift in Sources */,
+				189DD5F72219FE8A00C91E20 /* CurrencyViewControllerPresenter.swift in Sources */,
 				84BE2DDE2214824B00416E4F /* СancellationProtocol.swift in Sources */,
 				189DD5F32219FD7800C91E20 /* CurrencyCellModel.swift in Sources */,
 				189DD5EB2219FC1C00C91E20 /* CurrencyRate.swift in Sources */,
@@ -453,7 +454,6 @@
 			files = (
 				84BE2E07221A9C6600416E4F /* TestCurrencyParser.swift in Sources */,
 				84BE2DEE2214834A00416E4F /* ApiTests.swift in Sources */,
-				84BE2DE62214833500416E4F /* RevolutTestTaskTests.swift in Sources */,
 				84BE2E0B221AB61500416E4F /* TestCurrenciesDataSource.swift in Sources */,
 				84BE2E09221A9CAE00416E4F /* FakeNetworkHelper.swift in Sources */,
 			);
@@ -613,7 +613,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.myth.RevolutTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -633,7 +633,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.myth.RevolutTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

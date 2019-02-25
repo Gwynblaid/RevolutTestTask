@@ -13,3 +13,13 @@ extension CurrencyRate {
         case dictionaryFailure
     }
 }
+
+extension CurrencyRate: Hashable {
+    static func == (lhs: CurrencyRate, rhs: CurrencyRate) -> Bool {
+        return lhs.currency == rhs.currency
+    }
+    
+    public var hashValue: Int {
+        return currency.code.hashValue
+    }
+}

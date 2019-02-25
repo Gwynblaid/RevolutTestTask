@@ -4,7 +4,7 @@
 import Foundation
 import UIKit
 
-protocol DataSourceDelegate: class {
+protocol CurrencyInteractorDelegate: class {
 	func willBeginUpdates()
 	func dataReloaded()
 	func move(_ from: IndexPath, to: IndexPath)
@@ -12,11 +12,9 @@ protocol DataSourceDelegate: class {
 	func didEndUpdates()
 }
 
-protocol DataSourceProtocol {
-    var currentCurrency: CurrencyRate { get set }
-    
+protocol CurrencyInteractor {
     var numberOfSections: Int { get }
-    var delegate: DataSourceDelegate? { get set }
+    var delegate: CurrencyInteractorDelegate? { get set }
     
     func register(in tableView: UITableView)
     func rows(in section: Int) -> Int

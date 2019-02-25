@@ -4,11 +4,11 @@
 import Foundation
 import UIKit
 
-class CurrencyViewControllerInteractor: NSObject {
-    var dataSource: DataSourceProtocol
+class CurrencyViewControllerPresenter: NSObject {
+    var dataSource: CurrencyInteractor
     var tableView: UITableView
     
-    init(dataSource: DataSourceProtocol, tableView: UITableView) {
+    init(dataSource: CurrencyInteractor, tableView: UITableView) {
         self.dataSource = dataSource
         self.tableView = tableView
         super.init()
@@ -20,7 +20,7 @@ class CurrencyViewControllerInteractor: NSObject {
 }
 
 // MARK: - UITableViewDataSource
-extension CurrencyViewControllerInteractor: UITableViewDataSource {
+extension CurrencyViewControllerPresenter: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.numberOfSections
     }
@@ -35,16 +35,16 @@ extension CurrencyViewControllerInteractor: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension CurrencyViewControllerInteractor: UITableViewDelegate {
+extension CurrencyViewControllerPresenter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return dataSource.cellModel(for: indexPath)?.rowHeight ?? 0
     }
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		dataSource.selectCell(at: indexPath)
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 		DispatchQueue.main.async {
 			if let cellAction = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CellActionProtocol {
-				tableView.setContentOffset(.zero, animated: false)
 				cellAction.cellSelectedAction()
 			}
 		}
@@ -52,16 +52,26 @@ extension CurrencyViewControllerInteractor: UITableViewDelegate {
 }
 
 // MARK: - Public
-extension CurrencyViewControllerInteractor {
+extension CurrencyViewControllerPresenter {
     func reloadData() {
 		dataSource.loadData { _ in }
     }
 }
 
 // MARK: - DataSourceDelegate
-extension CurrencyViewControllerInteractor: DataSourceDelegate {
+extension CurrencyViewControllerPresenter: CurrencyInteractorDelegate {
 	func reload(section: Int) {
-		tableView.reloadSections(IndexSet(arrayLiteral: 1), with: .none)
+        if  section < tableView.numberOfSections  {
+            let indexPathToUpdate: [IndexPath] = tableView.indexPathsForVisibleRows?.compactMap {
+                if $0.section == section {
+                    return $0
+                }
+                return nil
+                } ?? []
+            tableView.reloadRows(at: indexPathToUpdate, with: .none)
+        } else {
+            tableView.reloadData()
+        }
 	}
 	
 	func willBeginUpdates() {
@@ -73,7 +83,7 @@ extension CurrencyViewControllerInteractor: DataSourceDelegate {
 	}
 	
     func dataReloaded() {
-		tableView.reloadData()
+        tableView.reloadData()
     }
 	
 	func didEndUpdates() {
